@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import "./styles.css";
 
 const faqs = [
@@ -26,5 +27,27 @@ export default function App() {
 }
 
 function Accordion() {
-	return <div>TODO</div>;
+	return (
+		<div>
+			{faqs.map((faq, index) => (
+				<AccordionItem
+					key={index + 1}
+					num={index + 1}
+					title={faq.title}
+					text={faq.text}
+				/>
+			))}
+		</div>
+	);
+}
+
+function AccordionItem({ num, title, text }) {
+	return (
+		<div className="item">
+			<p className="number">{num}</p>
+			<p className="text">{title}</p>
+			<p className="icon">-</p>
+			<div className="content-box">{text}</div>
+		</div>
+	);
 }
